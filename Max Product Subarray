@@ -1,0 +1,24 @@
+int Solution::maxProduct(const vector<int> &A) {
+    int n = A.size();
+
+    if (n == 0) {
+        return 0;
+    }
+
+    int max_product = A[0];
+    int min_product = A[0];
+    int result = A[0];
+
+    for (int i = 1; i < n; i++) {
+        if (A[i] < 0) {
+            swap(max_product, min_product);
+        }
+
+        max_product = max(A[i], max_product * A[i]);
+        min_product = min(A[i], min_product * A[i]);
+
+        result = max(result, max_product);
+    }
+
+    return result;
+}
