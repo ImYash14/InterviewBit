@@ -1,0 +1,13 @@
+int Solution::maxProfit(const vector<int> &A) {
+    int n = A.size();
+    int maxProfit = 0;
+
+    for (int i = 1; i < n; ++i) {
+        // If the stock price is higher today than yesterday, we can make a profit by buying yesterday and selling today.
+        if (A[i] > A[i - 1]) {
+            maxProfit += A[i] - A[i - 1];
+        }
+    }
+
+    return maxProfit;
+}
